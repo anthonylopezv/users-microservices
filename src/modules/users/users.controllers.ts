@@ -1,20 +1,18 @@
 
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Inject } from '@nestjs/common';
+import { ClientProxy, MessagePattern } from '@nestjs/microservices';
+import { Observable } from 'rxjs';
 
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './interfaces/user.interface';
+import { async } from 'rxjs/internal/scheduler/async';
 
-@Controller('users')
-export class UsersController {
+@Controller()
+export class UsersController{
   constructor(private readonly usersService: UsersService) {}
-
-  @Post()
-  async create(@Body() createdUserDto: CreateUserDto) {
-    return this.usersService.create(createdUserDto);
-  }
-
-  @Get()
+  
+  @MessagePattern({ cmd: 'FIND_USERS' })
   async findUsers(): Promise<User[]> {
     return this.usersService.findUsers();
   }
