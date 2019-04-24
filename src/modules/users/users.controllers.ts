@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './interfaces/user.interface';
-import { async } from 'rxjs/internal/scheduler/async';
 
 @Controller()
 export class UsersController{
@@ -16,4 +15,4 @@ export class UsersController{
   async findUsers(): Promise<User[]> {
     return this.usersService.findUsers();
   }
-}
+} 
