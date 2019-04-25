@@ -11,7 +11,7 @@ export class UsersService {
     @Inject('UserModelToken') private readonly userModel: Model<User>
   ) {}
 
-  async create(createUserDto: CreateUserDto): Promise<User> {
+  async createdUser(createUserDto: CreateUserDto): Promise<User> {
     const createdUser = new this.userModel(createUserDto);
     return await createdUser.save();
   }

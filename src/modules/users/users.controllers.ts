@@ -15,4 +15,9 @@ export class UsersController{
   async findUsers(): Promise<User[]> {
     return this.usersService.findUsers();
   }
+
+  @MessagePattern({ cmd: 'CREATED_USER' })
+  async createdUser(@Body() createdUserDto: CreateUserDto) {
+    return this.usersService.createdUser(createdUserDto);
+  }
 } 
