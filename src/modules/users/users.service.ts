@@ -1,6 +1,8 @@
 
+import { Injectable } from '@nestjs/common';
+
 import { Model } from 'mongoose';
-import { Injectable, Inject } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 
 import { User } from './interfaces/user.interface';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -8,7 +10,7 @@ import { CreateUserDto } from './dto/create-user.dto';
 @Injectable()
 export class UsersService {
   constructor(
-    @Inject('UserModelToken') private readonly userModel: Model<User>
+    @InjectModel('Cat') private readonly userModel: Model<User>
   ) {}
 
   async createdUser(createUserDto: CreateUserDto): Promise<User> {
@@ -18,5 +20,10 @@ export class UsersService {
 
   async findUsers(): Promise<User[]> {
     return await this.userModel.find();
+  }
+
+  async findUser(username: string): Promise<User> {
+    const user = await this.userModel.findOne({ username });
+    return user;
   }
 } 
