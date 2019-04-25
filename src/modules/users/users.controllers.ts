@@ -23,7 +23,7 @@ export class UsersController{
   }
 
   @MessagePattern({ cmd: 'FIND_USER' })
-  async findUser(@Body('username') username) {
+  async findUser(@Body() username: string) {
     return await this.usersService.findUser(username);
   }
 } 
