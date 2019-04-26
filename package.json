@@ -1,8 +1,8 @@
 {
   "name": "users-microservices",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Library user service with nestjs",
+  "main": "./src/main.ts",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "start": "ts-node src/main",
@@ -11,9 +11,18 @@
     "start:prod": "node dist/main.js",
     "heroku-postbuild": "npm install --only=dev --no-shrinkwrap && npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shisui3009/users-microservices"
+  },
+  "keywords": [
+    "npm",
+    "node",
+    "nestjs",
+    "typescript"
+  ],
+  "author": "Anthony Lopez <anthodev1195@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "@nestjs/common": "^6.1.1",
     "@nestjs/core": "^6.1.1",
