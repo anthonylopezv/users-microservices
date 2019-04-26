@@ -1,4 +1,7 @@
 
+import * as env from 'dotenv';
+env.config();
+
 import { NestFactory } from '@nestjs/core';
 import { Transport } from '@nestjs/microservices';
 import { ApplicationModule } from './modules/app.module';
@@ -15,6 +18,6 @@ async function bootstrap() {
     }
   })
   await app.startAllMicroservicesAsync();
-  await app.listen(3001);
+  await app.listen(process.env.PORT);
 }
 bootstrap();

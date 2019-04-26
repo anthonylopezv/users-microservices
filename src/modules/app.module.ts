@@ -5,7 +5,7 @@ import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://admin:admin2019@ds147436.mlab.com:47436/db-user-service', {
+    MongooseModule.forRoot(process.env.MLAB_URL, {
       useNewUrlParser: true,
     }),
     UsersModule,
